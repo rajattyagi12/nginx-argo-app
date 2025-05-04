@@ -16,6 +16,6 @@ spec:
       - name: http-echo
         image: hashicorp/http-echo:0.2.3
         args:
-          - "-text=Hello from Kubernetes"
+          - "-text=Hello from rajat from chandigarh"
         ports:
           - containerPort: 5678
