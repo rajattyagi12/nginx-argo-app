@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: nodejs-service
 spec:
   selector:
-    app: nginx
+    app: nodejs  # The service will match the Node.js pods created in the deployment
   ports:
     - protocol: TCP
-      port: 80          # Port exposed by the service inside the cluster
-      targetPort: 8081  # Port exposed by the container
-      nodePort: 30081   # Specific NodePort (allowed only if type is NodePort)
-  type: NodePort        # Fix: must be NodePort if using nodePort field
+      port: 80  # External port exposed by the service
+      targetPort: 8080  # Port inside the container
+      nodePort: 30080  # External port on the node (optional, if using NodePort type)
+  type: NodePort  # Exposing via NodePort so that it's accessible externally
