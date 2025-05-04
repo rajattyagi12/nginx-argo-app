@@ -4,10 +4,10 @@ metadata:
   name: nodejs-service
 spec:
   selector:
-    app: nodejs  # The service will match the Node.js pods created in the deployment
+    app: nodejs
   ports:
     - protocol: TCP
-      port: 80  # External port exposed by the service
-      targetPort: 8080  # Port inside the container
-      nodePort: 30080  # External port on the node (optional, if using NodePort type)
-  type: NodePort  # Exposing via NodePort so that it's accessible externally
+      port: 80
+      targetPort: 5678
+      nodePort: 30080
+  type: NodePort
