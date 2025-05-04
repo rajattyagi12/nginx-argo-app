@@ -16,5 +16,18 @@ spec:
       - name: nginx
         image: nginx:1.25
         ports:
-        - containerPort: 80
-
+        - containerPort: 8081  # Changed container port to 8081 to avoid conflict
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80  # Exposed service port
+      targetPort: 8081  # Points to the container's 8081 port
+      nodePort: 30081  # Exposed port on the node (NodePort type)
+  type: NodePort  # Using NodePort to expose the service externally
